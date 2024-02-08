@@ -5,7 +5,9 @@ const List = ({ listData }) => {
     <div className="list">
       {listData.map((item) => {
         const { note, date, time } = item;
-        return <Item noteData={note} dateDate={date} timeData={time} />;
+        return (
+          <Item key={id} noteData={note} dateDate={date} timeData={time} />
+        );
       })}
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const Edit = ({ add }) => {
   const [note, setNote] = useState(""); // [1, setNote]
@@ -17,6 +18,12 @@ const Edit = ({ add }) => {
   }
 
   // console.log(note, date, time)
+
+  function addItem() {
+    add(function (prev) {
+      return [...prev, { id: v4(), note, date, time }];
+    });
+  }
 
   return (
     <div>
