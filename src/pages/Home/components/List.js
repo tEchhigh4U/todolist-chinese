@@ -1,12 +1,19 @@
 import Item from "./Item";
 
-const List = ({ listData }) => {
+const List = ({ listData, deleteData }) => {
   return (
     <div className="list">
       {listData.map((item) => {
-        const { note, date, time } = item;
+        const { id, note, date, time } = item;
         return (
-          <Item key={id} noteData={note} dateDate={date} timeData={time} />
+          <Item
+            key={id}
+            id={id}
+            noteData={note}
+            dateDate={date}
+            timeData={time}
+            deleteData={deleteData}
+          />
         );
       })}
     </div>
