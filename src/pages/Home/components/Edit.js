@@ -29,11 +29,11 @@ const Edit = ({ add }) => {
     <div>
       <h1>備忘錄</h1>
       <p>記事：</p>
-      <input type="text" value="note" onChange={handleNoteChange} />
+      <input type="text" value={note} onChange={handleNoteChange} />
       <p>日期：</p>
-      <input type="date" value="date" onChange={handleDateChange} />
+      <input type="date" value={date} onChange={handleDateChange} />
       <p>時間：</p>
-      <input type="time" value="time" onChange={handleTimeChange} />
+      <input type="time" value={time} onChange={handleTimeChange} />
       <button onClick={addItem} className="add">
         新增
       </button>
