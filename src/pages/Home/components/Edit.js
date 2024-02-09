@@ -42,33 +42,42 @@ const Edit = ({ add, submittingStatus }) => {
   useEffect(() => {
     if (item) {
       Swal.fire({
-        title: '成功！',
-        text: '備忘錄新增成功！',
-        icon: 'success',
-        confirmButtonText: '確定'
-      });
+        title: "你需要保存嗎？",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "保存",
+        denyButtonText: `不保存`,
+        cancelButtonText: "取消",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          //Add the item to the list
+          submittingStatus.current = true;
+          add(function (prev) {
+            return [item, ...prev];
+          });
 
-      //Add the item to the list
-      submittingStatus.current = true;
-      add(function (prev) {
-        return [item, ...prev];
-      });
+          //Clear the input fields
+          setNote("");
+          setDate("");
+          setTime("");
+          setItem(null);
 
-      //Clear the input fields
-      setNote("");
-      setDate("");
-      setTime("");
-      setItem(null);
+          Swal.fire("成功保存！", "", "success");
+        } else if (result.isDenied) {
+          Swal.fire("你還沒有保存啊！", "", "info");
+        }
+      });
     }
   }, [item, add, submittingStatus]);
 
   function addItem() {
     if (!note || !date || !time) {
       Swal.fire({
-        title: '錯誤！',
-        text: '請輸入事件、日期和時間！',
-        icon: 'error',
-        confirmButtonText: '確定'
+        title: "錯誤！",
+        text: "請輸入事件、日期和時間！",
+        icon: "error",
+        confirmButtonText: "確定",
       });
       return;
     } else {
@@ -79,7 +88,7 @@ const Edit = ({ add, submittingStatus }) => {
 
   return (
     <div>
-      <h1>備忘錄</h1>
+      <h1>計劃的力量 -- 備忘錄</h1>
       <p>記事：</p>
       <input type="text" value={note} onChange={handleNoteChange} />
       <p>日期：</p>
@@ -87,7 +96,7 @@ const Edit = ({ add, submittingStatus }) => {
       <p>時間：</p>
       <input type="time" value={time} onChange={handleTimeChange} />
       <button onClick={addItem} className="add">
-        新增
+        新增備忘錄
       </button>
     </div>
   );

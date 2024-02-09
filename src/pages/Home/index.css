@@ -1,7 +1,7 @@
 .app {
   width: 100%;
   padding: 20px;
-  border: 1px solid #000;
+  border: 2px solid #000;
   box-sizing: border-box;
 }
 
@@ -22,12 +22,13 @@ input {
 
 .list {
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .item {
   width: 100%;
   border-bottom: 1px solid #000;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
@@ -38,5 +39,13 @@ input {
   border: 0;
   background-color: rgb(212, 101, 101);
   color: #fff;
-  padding: 10px;
+  padding: 5px;
+}
+
+.footer-basic {
+  padding: 2px 0;
+  background-color:#ffffff;
+  color:#4b4c4d;
+  text-align: center;
+  font: size 3px;;
 }

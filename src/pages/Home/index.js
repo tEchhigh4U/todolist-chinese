@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Edit from "./components/Edit";
 import List from "./components/List";
+import Footer from "./components/Footer";
 import "./index.css";
 import { API_GET_DATA } from "../../global/constants";
 
@@ -45,6 +46,7 @@ const Home = () => {
         deleteData={setData}
         submittingStatus={submittingStatus}
       />
+      <Footer />
     </div>
   );
 };
