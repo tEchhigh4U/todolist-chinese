@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { v4 } from "uuid";
+import Swal from "sweetalert2";
 
 const Edit = ({ add, submittingStatus }) => {
   const [note, setNote] = useState(""); // [1, setNote]
@@ -40,7 +41,12 @@ const Edit = ({ add, submittingStatus }) => {
   // which only happens when note, date or time change together
   useEffect(() => {
     if (item) {
-      window.alert("備忘錄新增成功！");
+      Swal.fire({
+        title: '成功！',
+        text: '備忘錄新增成功！',
+        icon: 'success',
+        confirmButtonText: '確定'
+      });
 
       //Add the item to the list
       submittingStatus.current = true;
@@ -58,7 +64,12 @@ const Edit = ({ add, submittingStatus }) => {
 
   function addItem() {
     if (!note || !date || !time) {
-      window.alert("請輸入備忘錄、日期、時間！");
+      Swal.fire({
+        title: '錯誤！',
+        text: '請輸入事件、日期和時間！',
+        icon: 'error',
+        confirmButtonText: '確定'
+      });
       return;
     } else {
       setItem({ id: v4(), note, date, time });
