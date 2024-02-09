@@ -1,15 +1,27 @@
 {
-    "posts": [
+  "posts": [
+    {
+      "data": [
         {
-            "id": "1",
-            "data": [
-                {
-                    "id": "1",
-                    "note": "This is a note",
-                    "date": "2013-01-01",
-                    "time": "12:00:00"
-                }
-            ]
+          "id": "16ab17cd-1649-40ac-9515-5392a8a821c7",
+          "note": "read react doc",
+          "date": "2024-02-10",
+          "time": "22:00"
+        },
+        {
+          "id": "67491ebb-21da-4307-a713-4a5d3e58be87",
+          "note": "wash bicycle",
+          "date": "2024-02-10",
+          "time": "22:00"
+        },
+        {
+          "id": "a00b53b3-6ba4-438f-8f5d-fdc2be40810b",
+          "note": "wash car",
+          "date": "2024-02-10",
+          "time": "19:47"
         }
-    ]
+      ],
+      "id": "1"
+    }
+  ]
 }
