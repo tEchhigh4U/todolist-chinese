@@ -10,7 +10,7 @@ const List = ({ listData, deleteData }) => {
             key={id}
             id={id}
             noteData={note}
-            dateDate={date}
+            dateData={date}
             timeData={time}
             deleteData={deleteData}
           />

@@ -21,9 +21,36 @@ const Edit = ({ add }) => {
 
   function addItem() {
     add(function (prev) {
-      return [...prev, { id: v4(), note, date, time }];
+      return [{ id: v4(), note, date, time }, ...prev];
     });
   }
+
+  // const [item, setItem] = useState(null);
+
+  // Whenever note, date, or time change, update the item state
+  // useEffect(() => {
+  //   //Only update the item state if note, date or time are not empty
+  //   if (note && date && time) {
+  //     setItem({ note, date, time });
+  //   }
+  // }, [note, date, time]);
+
+  //This useEffect will now only trigger when the item state changes,
+  //which only happens when note, date or time change together
+  // useEffect(() => {
+  //   if (item) {
+  //     window.alert("備忘錄新增成功！");
+
+  //     //Add the item to the list
+  //     addItem();
+
+  //     //Clear the input fields
+  //     setNote("");
+  //     setDate("");
+  //     setTime("");
+  //     setItem(null);
+  //   }
+  // }, [item, addItem]);
 
   return (
     <div>
