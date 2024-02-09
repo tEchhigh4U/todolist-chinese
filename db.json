@@ -2,7 +2,14 @@
     "posts": [
         {
             "id": "1",
-            "data": []
+            "data": [
+                {
+                    "id": "1",
+                    "note": "This is a note",
+                    "date": "2013-01-01",
+                    "time": "12:00:00"
+                }
+            ]
         }
     ]
 }
