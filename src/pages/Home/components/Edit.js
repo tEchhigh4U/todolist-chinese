@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 } from "uuid";
 
 const Edit = ({ add, submittingStatus }) => {
@@ -19,39 +19,52 @@ const Edit = ({ add, submittingStatus }) => {
 
   // console.log(note, date, time)
 
-  function addItem() {
-    submittingStatus.current = true;
-    add(function (prev) {
-      return [{ id: v4(), note, date, time }, ...prev];
-    });
-  }
+  // function addItem() {
+  //   submittingStatus.current = true;
+  //   add(function (prev) {
+  //     return [{ id: v4(), note, date, time }, ...prev];
+  //   });
+  // }
 
-  // const [item, setItem] = useState(null);
+  const [item, setItem] = useState(null);
 
   // Whenever note, date, or time change, update the item state
-  // useEffect(() => {
-  //   //Only update the item state if note, date or time are not empty
-  //   if (note && date && time) {
-  //     setItem({ note, date, time });
-  //   }
-  // }, [note, date, time]);
+  useEffect(() => {
+    //Only update the item state if note, date or time are not empty
+    if (note && date && time) {
+      setItem({ id: v4(), note, date, time });
+    }
+  }, [note, date, time]);
 
-  //This useEffect will now only trigger when the item state changes,
-  //which only happens when note, date or time change together
-  // useEffect(() => {
-  //   if (item) {
-  //     window.alert("備忘錄新增成功！");
+  // This useEffect will now only trigger when the item state changes,
+  // which only happens when note, date or time change together
+  useEffect(() => {
+    if (item) {
+      window.alert("備忘錄新增成功！");
 
-  //     //Add the item to the list
-  //     addItem();
+      //Add the item to the list
+      submittingStatus.current = true;
+      add(function (prev) {
+        return [item, ...prev];
+      });
 
-  //     //Clear the input fields
-  //     setNote("");
-  //     setDate("");
-  //     setTime("");
-  //     setItem(null);
-  //   }
-  // }, [item, addItem]);
+      //Clear the input fields
+      setNote("");
+      setDate("");
+      setTime("");
+      setItem(null);
+    }
+  }, [item, add, submittingStatus]);
+
+  function addItem() {
+    if (!note || !date || !time) {
+      window.alert("請輸入備忘錄、日期、時間！");
+      return;
+    } else {
+      setItem({ id: v4(), note, date, time });
+      // This will trigger the useEffect above
+    }
+  }
 
   return (
     <div>

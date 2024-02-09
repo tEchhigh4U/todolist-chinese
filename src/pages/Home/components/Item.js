@@ -1,4 +1,11 @@
-const Item = ({ id, noteData, dateData, timeData, deleteData, submittingStatus}) => {
+const Item = ({
+  id,
+  noteData,
+  dateData,
+  timeData,
+  deleteData,
+  submittingStatus,
+}) => {
   function handleDateChange() {
     submittingStatus.current = true;
     deleteData(function (prev) {
